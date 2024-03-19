@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CadastraContato from './src/pages/CadastraContato';
 import BuscarContato from  './src/pages/BuscarContatos'
 import Home from './src/pages/Home';
+import BuscarContato from './src/pages/BuscarContatos';
 import { NavigationContainer } from '@react-navigation/native'
 
 const Stack = createNativeStackNavigator();
@@ -14,8 +15,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={Home} />
-       {/* <Stack.Screen name="TodosClientes" component={TodosClientes} /> */}
-        <Stack.Screen name="BuscarContatos" component={BuscarContato} /> 
+         {/* <Stack.Screen name="TodosClientes" component={TodosClientes} /> */}
+      <Stack.Screen name="BuscarContato" component={BuscarContato} /> 
         <Stack.Screen name="CadastraContato" component={CadastraContato} />
         {/* <Stack.Screen name="Creditos" component={Creditos} /> */}
       </Stack.Navigator>
