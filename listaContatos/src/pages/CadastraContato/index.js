@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View,SafeAreaView } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, SafeAreaView } from 'react-native';
 
 import api from '../../services/api/api'
 
 
-export default function CadastraContato(){
+export default function CadastraContato() {
     const [Nome, setNome] = useState('');
     const [Email, setEmail] = useState('');
     const [Celular, setCelular] = useState();
@@ -35,8 +35,8 @@ export default function CadastraContato(){
                 handleShowAlert();
                 return;
             }
-           
-    
+
+
             const response = await api.post(`/contatos`, { nome: Nome.trim(), tel_cel: Celular.trim(), tel_fixo: Telefone.trim(), email: Email.trim() })
                 .catch(function (error) {
                     if (error.response) {
@@ -47,7 +47,7 @@ export default function CadastraContato(){
                         if ((error.request._response).includes('Failed')) {
                             console.error("Erro ao conectar com a API");
                         }
-    
+
                     } else {
                         console.error('Error:', error.message);
                     }
@@ -72,31 +72,34 @@ export default function CadastraContato(){
             console.log(error)
         }
     }
-    
+
     return (
         <SafeAreaView style={styles.container}>
             <View>
                 <View>
-                    <Text>Nome do Cliente:</Text>
-                    <TextInput value={Nome} onChangeText={setNome} ></TextInput>
+                    <Text style={styles.Texto}>Nome do Cliente:</Text>
+                    <TextInput value={Nome} onChangeText={setNome} style={styles.Input}></TextInput>
                 </View>
                 <View>
-                    <Text>Email do Cliente:</Text>
-                    <TextInput value={Email} onChangeText={setEmail}></TextInput>
+                    <Text style={styles.Texto}>Email do Cliente:</Text>
+                    <TextInput value={Email} onChangeText={setEmail} style={styles.Input}></TextInput>
                 </View>
                 <View>
-                    <Text>Telefone do Cliente:</Text>
-                    <TextInput value={Telefone} onChangeText={setTelefone}></TextInput>
+                    <Text style={styles.Texto}>Telefone do Cliente:</Text>
+                    <TextInput value={Telefone} onChangeText={setTelefone} style={styles.Input}></TextInput>
                 </View>
                 <View>
-                    <Text>Celular do Cliente:</Text>
-                    <TextInput value={Celular} onChangeText={setCelular}></TextInput>
+                    <Text style={styles.Texto}>Celular do Cliente:</Text>
+                    <TextInput value={Celular} onChangeText={setCelular} style={styles.Input}></TextInput>
                 </View>
-                <TouchableOpacity
+                <TouchableOpacity style={styles.Botao}
                     onPress={() => {
                         SalvarCliente()
                     }}
-                ></TouchableOpacity >
+                >
+
+                    <Text>Cadastrar contato</Text>
+                </TouchableOpacity >
             </View>
             <StatusBar style="auto" />
         </SafeAreaView>
@@ -111,4 +114,23 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    Texto: {
+        fontSize: 20,
+        marginBottom: 5
+    },
+    Input: {
+        borderWidth: 1,
+        width: '120%'
+    },
+    Botao: {
+        width: 120,
+        height: 50,
+        borderWidth: 1,
+        borderColor: "#7D7D7D",
+        margin: 10,
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 8,
+
+    }
 });
