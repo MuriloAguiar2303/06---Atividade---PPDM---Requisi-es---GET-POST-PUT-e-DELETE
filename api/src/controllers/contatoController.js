@@ -9,10 +9,10 @@ const contatoController = {
             throw error;
         }
     },
-    selectIdContatos: async (req, res) => {
+    selectContatosName: async (req, res) => {
         try {
-            const { id } = req.params;
-            const selectId = await modelContatos.selecionaContatoId(id);
+            const { nome} = req.params;
+            const selectId = await modelContatos.selecionaContatoNome(nome);
             return res.json(selectId)
         } catch (error) {
             throw error;

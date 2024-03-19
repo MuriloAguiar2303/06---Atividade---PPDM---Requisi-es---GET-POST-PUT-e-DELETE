@@ -11,11 +11,11 @@ const modelContatos = {
         }
     },
 
-    selecionaContatoId: async (id) => {
+    selecionaContatoNome: async (nome) => {
         try {
             const conn = await connect();
-            const sql = "SELECT * FROM tbl_contatos WHERE id=?;";
-            const values = id;
+            const sql = "SELECT * FROM tbl_contatos WHERE nome=?;";
+            const values = nome;
             const [rows] = await conn.query(sql, values);
             return rows;
         } catch (error) {
