@@ -8,9 +8,6 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <View style={{width:"100%",height:15,display:"flex", alignItems:"center", flexDirection:"row"}}>
-            <View>Home</View>
-      </View>
       <View>
         <Button onPress={() => {navigation.navigate('CadastraCliente')}}>
             <Text>Cadastra Cliente</Text>
