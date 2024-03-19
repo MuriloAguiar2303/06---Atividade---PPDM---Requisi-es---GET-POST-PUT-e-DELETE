@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View,SafeAreaView } from 'react-native';
 
 import api from '../../services/api/api'
 
@@ -10,7 +10,7 @@ export default function CadastraContato(){
     const [Email, setEmail] = useState('');
     const [Celular, setCelular] = useState();
     const [Telefone, setTelefone] = useState();
-    const [showAlert, setShowAlert] = useState(false);
+    // const [showAlert, setShowAlert] = useState(false);
 
 
     const SalvarCliente = async () => {
@@ -68,7 +68,6 @@ export default function CadastraContato(){
                     handleShowAlert();
                 }
             }
-            // console.log(cliente);
         } catch (error) {
             console.log(error)
         }
@@ -97,7 +96,7 @@ export default function CadastraContato(){
                     onPress={() => {
                         SalvarCliente()
                     }}
-                ></TouchableOpacity>
+                ></TouchableOpacity >
             </View>
             <StatusBar style="auto" />
         </SafeAreaView>
