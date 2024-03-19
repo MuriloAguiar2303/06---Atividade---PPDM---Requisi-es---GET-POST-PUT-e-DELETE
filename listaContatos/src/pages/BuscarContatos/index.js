@@ -10,83 +10,93 @@ import api from '../../services/api/api';
 export default function BuscarContato() {
     const [contato, setContato] = useState([]);
     const [nomePesq, setNomePesq] = useState(null);
-    const [Nome, setNome] = useState('');
-    const [Email, setEmail] = useState('');
-    const [Celular, setCelular] = useState();
-    const [Telefone, setTelefone] = useState();
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
 
+    function handleButtonClick() {
 
+        inputNome.current.focus();
+      }
+          const handleShowAlert = () => {
+        setShowAlert(true);
+      };
+    
 
+      const hideAlert = () => {
+        setShowAlert(false);
+      };
+    
+
+      useEffect(() => {
+        if (showAlert) {
+          Alert.alert(
+            'Atenção!',
+            alertMessage,
+            [
+              {
+                text: 'OK',
+                onPress: () => {
+                  hideAlert();
+                }
+              }
+            ],
+            { cancelable: false }
+          );
+        }
+      }, [showAlert]);
+    
 
     const getContato = async () => {
         try {
-            if (Nome == '' || Nome == null) {
-                setAlertMessage('Preencha corretamente o campo nome!')
-                handleShowAlert();
-                return;
-            }
-            if (Email == '' || Email == null) {
-                setAlertMessage('Preencha corretamente o campo Email')
-                handleShowAlert();
-                return;
-            }
-            if (Celular == '' || Celular == null) {
-                setAlertMessage('Preencha corretamente o campo Celular')
-                handleShowAlert();
-                return;
-            }
-            if (Telefone == '' || Telefone == null) {
-                setAlertMessage('Preencha corretamente o campo Telefone')
-                handleShowAlert();
-                return;
-            }
-
-
-            const response = await api.get(`/contatos`, { nome: Nome.trim(), tel_cel: Celular.trim(), tel_fixo: Telefone.trim(), email: Email.trim() })
+            setNomePesq(nomePesq.trim());
+            // console.log((nomePesq.length));
+            if (nomePesq != null && nomePesq.length > 0) {
+              const response = await api.get(`/contato/${nomePesq}`)
                 .catch(function (error) {
-                    if (error.response) {
-                        console.error(error.response.data);
-                        console.error(error.response.status);
-                        console.error(error.response.headers);
-                    } else if (error.request) {
-                        if ((error.request._response).includes('Failed')) {
-                            console.error("Erro ao conectar com a API");
-                        }
-
-                    } else {
-                        console.error('Error:', error.message);
+                  if (error.response) {
+                    console.error(error.response.data);
+                    console.error(error.response.status);
+                    console.error(error.response.headers);
+                  } else if (error.request) {
+                    if ((error.request._response).includes('Failed')) {
+                      console.error("Erro ao conectar com a API");
                     }
-                    console.error(error.config);
+      
+                  } else {
+                    console.error('Error:', error.message);
+                  }
+                  console.error(error.config);
                 });
-            console.log((response));
-            if (response != undefined) {
+              if (response != undefined) {
                 if (response.data.length === 0) {
-
-                    setAlertMessage('Registro não localizado na base de dados, verifique e tente novamente!')
-                    handleShowAlert();
+      
+                  setAlertMessage('Registro não localizado na base de dados, verifique e tente novamente!')
+                  handleShowAlert();
                 }
                 else {
-                    console.log(response.data)
-                    setContato(response.data);
+                  console.log(response.data)
+                  setContato(response.data);
                 }
+              }
+          
             }
-        else if (id == null || id == '') {
-            setContato([]);
-            setAlertMessage('Inform um valor válido para o campo!');
-            handleShowAlert();
+            else if (id == null || id == '') {
+              setContato([]);
+              setAlertMessage('Inform um valor válido para o campo!');
+              handleShowAlert();
+            }
+          } catch (error) {
+            console.log(error)
+          }
+      
         }
-    } catch (error) {
-        console.log(error)
-    }
-
-}
 
 
 return (
     <SafeAreaView style={styles.container}>
 
 
-        <Text>Informe o nome do cliente e clique em Pesquisar</Text>
+        <Text>Informe o nome do contato que deseja Pesquisar</Text>
       <TextInput
       
         mode='outlined'
@@ -99,7 +109,7 @@ return (
         <TouchableOpacity
             onPress={() => { getContato(); handleButtonClick }}
 
-            style={[styles.alignVH, { width: '80%', height: 40, borderColor: 'black', backgroundColor: 'blue', borderRadius: 4 }]}>
+            style={[styles.alignVH, { width: '80%', height: 40,borderWidth:1, borderColor: 'black', backgroundColor: 'blue', borderRadius: 4 }]}>
             <Text style={{ color: 'white' }}>Pressione para Pesquisar</Text>
         </TouchableOpacity>
 
