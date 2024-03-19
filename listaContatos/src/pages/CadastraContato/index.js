@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View,SafeAreaView } from 'react-native';
 
 import api from '../../services/api/api'
 
 
-export default function CadastraCliente(){
+export default function CadastraContato(){
     const [Nome, setNome] = useState('');
     const [Email, setEmail] = useState('');
     const [Celular, setCelular] = useState();
@@ -96,7 +96,7 @@ export default function CadastraCliente(){
                     onPress={() => {
                         SalvarCliente()
                     }}
-                ></TouchableOpacity>
+                ></TouchableOpacity >
             </View>
             <StatusBar style="auto" />
         </SafeAreaView>
