@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import 'react-native-gesture-handler';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import CadastraCliente from './src/pages/CadastraCliente';
+import CadastraCliente from './src/pages/CadastraContato';
 import Home from './src/pages/Home';
 import { NavigationContainer } from '@react-navigation/native'
 
@@ -18,7 +18,7 @@ export default function App() {
       <Stack.Screen name="Home" component={Home} />
       {/* <Stack.Screen name="TodosClientes" component={TodosClientes} />
       <Stack.Screen name="BuscarCliente" component={BuscarCliente} /> */}
-      <Stack.Screen name="CadastraCliente" component={CadastraCliente} />
+      <Stack.Screen name="CadastraContato" component={CadastraCliente} />
       {/* <Stack.Screen name="Creditos" component={Creditos} /> */}
   </Stack.Navigator>
   </NavigationContainer>
