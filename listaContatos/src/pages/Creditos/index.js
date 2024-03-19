@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Button, ScrollView, StyleSheet, Text, View,Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
-export default function App() {
+export default function Creditos() {
   return (
     <ScrollView>
       <View style={styles.container}>
