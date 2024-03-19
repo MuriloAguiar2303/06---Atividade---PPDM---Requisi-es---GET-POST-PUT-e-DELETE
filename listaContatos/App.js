@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import 'react-native-gesture-handler';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CadastraContato from './src/pages/CadastraContato';
-import BuscarContato from  './src/pages/BuscarContatos'
 import Home from './src/pages/Home';
 import BuscarContato from './src/pages/BuscarContatos';
 import { NavigationContainer } from '@react-navigation/native'
