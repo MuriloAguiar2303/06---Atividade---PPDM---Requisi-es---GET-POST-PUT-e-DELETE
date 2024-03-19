@@ -1,15 +1,18 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
-
-
+import { useNavigation } from '@react-navigation/native';
 export default function Home() {
-    // const navigation = NavigationContainer();
+  const navigation = useNavigation();
+
+  const navegaHome = () => {
+    navigation.navigate('CadastraContato')
+  }
 
   return (
     <View style={styles.container}>
       <View>
-            <Text>Cadastra Cliente</Text>
+            <Button title='Cadastrar Contato' onPress={navegaHome}></Button>
       </View>
       <StatusBar style="auto" />
     </View>

@@ -1,7 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import 'react-native-gesture-handler';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import CadastraCliente from './src/pages/CadastraCliente';
+import Home from './src/pages/Home';
+import { NavigationContainer } from '@react-navigation/native'
 
 const Stack = createStackNavigator();
 
