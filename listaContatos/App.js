@@ -3,9 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import 'react-native-gesture-handler';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CadastraContato from './src/pages/CadastraContato';
-import BuscarContato from  './src/pages/BuscarContatos'
 import Home from './src/pages/Home';
 import BuscarContato from './src/pages/BuscarContatos';
+import Creditos from './src/pages/Creditos';
 import { NavigationContainer } from '@react-navigation/native'
 
 const Stack = createNativeStackNavigator();
@@ -18,7 +18,7 @@ export default function App() {
          {/* <Stack.Screen name="TodosClientes" component={TodosClientes} /> */}
       <Stack.Screen name="BuscarContato" component={BuscarContato} /> 
         <Stack.Screen name="CadastraContato" component={CadastraContato} />
-        {/* <Stack.Screen name="Creditos" component={Creditos} /> */}
+        <Stack.Screen name="Creditos" component={Creditos} />
       </Stack.Navigator>
     </NavigationContainer>
   );

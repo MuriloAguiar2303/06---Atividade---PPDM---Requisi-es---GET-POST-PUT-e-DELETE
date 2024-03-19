@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View ,TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+
 export default function Home() {
   const navigation = useNavigation();
 
@@ -13,12 +14,25 @@ export default function Home() {
     navigation.navigate('BuscarContato')
   }
 
+  const navegaCreditos = () => {
+    navigation.navigate('Creditos')
+  }
+
   return (
     <View style={styles.container}>
-      <View style={{display:'flex', flexDirection:'row', backgroundColor:"black",width:'100%', height:"24%",padding:10}}>
-            <Button title='Cadastrar Contato' onPress={navegaHome} style={{height:"100%",width:"40%"}}></Button>
-            <Button title='BuscarContato' onPress={navegaBuscaContato} style={{height:"100%",width:"40%"}}></Button>
+      <View  style={{display:'flex', flexDirection:'row',justifyContent:"space-between",width:'100%', height:"24%",padding:10}}>
+          
+            <TouchableOpacity style={{width:"45%",height:"100%",  backgroundColor:"blue", display:'flex', justifyContent:"center",alignItems:"center"}} title='Cadastrar Contato' onPress={navegaHome} ><Text style={{color:"white"}}>Cadastrar Cliente</Text></TouchableOpacity>
+            <TouchableOpacity style={{width:"45%", height:"100%", backgroundColor:"blue",display:'flex', justifyContent:"center",alignItems:"center"}} title='BuscarContato' onPress={navegaBuscaContato} ><Text style={{color:"white"}}>Buscar Contato</Text></TouchableOpacity>
+           
       </View>
+      <View  style={{display:'flex', flexDirection:'row',justifyContent:"space-between",width:'100%', height:"24%",padding:10}}>
+          
+            <TouchableOpacity style={{width:"45%",height:"100%",  backgroundColor:"blue", display:'flex', justifyContent:"center",alignItems:"center"}} title='Cadastrar Contato' onPress={navegaHome} ><Text style={{color:"white"}}>Cadastrar Cliente</Text></TouchableOpacity>
+            <TouchableOpacity style={{width:"45%", height:"100%", backgroundColor:"blue",display:'flex', justifyContent:"center",alignItems:"center"}} title='BuscarContato' onPress={navegaBuscaContato} ><Text style={{color:"white"}}>Creditos</Text></TouchableOpacity>
+           
+      </View>
+      
       <StatusBar style="auto" />
     </View>
   );

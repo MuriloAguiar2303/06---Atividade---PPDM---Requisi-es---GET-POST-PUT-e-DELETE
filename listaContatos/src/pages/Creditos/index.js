@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
-export default function App() {
+export default function Creditos() {
   return (
     <View style={styles.container}>
       <View style={{width:"100%",height:15,display:"flex", alignItems:"center", flexDirection:"row"}}>
