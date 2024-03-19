@@ -8,7 +8,9 @@ export default function App() {
       <View style={styles.container}>
         <View>
           <View><Text>Murilo Aguiar</Text></View>
-          <View><Image></Image></View>
+          <View><Image
+          
+          ></Image></View>
           <View>O Murilo foi responsavel de criar </View>
         </View>
 
@@ -16,7 +18,7 @@ export default function App() {
           <View><Text>Lucas Manrick</Text></View>
           <View><Image
           style={styles.image} 
-          source={require("../../../assets/teste.jpg")}
+          source={require("../../../assets/image.jpg")}
           ></Image></View>
           <View></View>
         </View>
