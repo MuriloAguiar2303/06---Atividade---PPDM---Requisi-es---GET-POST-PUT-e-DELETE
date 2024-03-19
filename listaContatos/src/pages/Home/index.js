@@ -9,10 +9,15 @@ export default function Home() {
     navigation.navigate('CadastraContato')
   }
 
+  const navegaBuscaContato = () => {
+    navigation.navigate('BuscarContato')
+  }
+
   return (
     <View style={styles.container}>
-      <View>
-            <Button title='Cadastrar Contato' onPress={navegaHome}></Button>
+      <View style={{display:'flex', flexDirection:'row', backgroundColor:"black",width:'100%', height:"24%",padding:10}}>
+            <Button title='Cadastrar Contato' onPress={navegaHome} style={{height:"100%",width:"40%"}}></Button>
+            <Button title='BuscarContato' onPress={navegaBuscaContato} style={{height:"100%",width:"40%"}}></Button>
       </View>
       <StatusBar style="auto" />
     </View>
