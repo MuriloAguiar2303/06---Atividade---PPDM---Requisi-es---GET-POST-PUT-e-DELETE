@@ -11,8 +11,8 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <View>
-            <Button title='Cadastrar Contato' onPress={navegaHome}></Button>
+      <View style={{display:'flex', flexDirection:'row', backgroundColor:"black",width:'100%', height:50,padding:10}}>
+            <Button title='Cadastrar Contato' onPress={navegaHome} style={{height:"100%",width:"40%"}}></Button>
       </View>
       <StatusBar style="auto" />
     </View>
