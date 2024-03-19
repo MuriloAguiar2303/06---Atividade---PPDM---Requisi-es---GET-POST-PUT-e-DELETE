@@ -10,7 +10,7 @@ export default function CadastraCliente(){
     const [Email, setEmail] = useState('');
     const [Celular, setCelular] = useState();
     const [Telefone, setTelefone] = useState();
-    const [showAlert, setShowAlert] = useState(false);
+    // const [showAlert, setShowAlert] = useState(false);
 
 
     const SalvarCliente = async () => {
@@ -68,7 +68,6 @@ export default function CadastraCliente(){
                     handleShowAlert();
                 }
             }
-            // console.log(cliente);
         } catch (error) {
             console.log(error)
         }
