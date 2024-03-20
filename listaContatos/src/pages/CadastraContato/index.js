@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, SafeAreaView } from 'react-native';
+import { useState, useEffect } from 'react';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, SafeAreaView,Alert } from 'react-native';
 
 import api from '../../services/api/api'
 
@@ -10,7 +10,38 @@ export default function CadastraContato() {
     const [Email, setEmail] = useState('');
     const [Celular, setCelular] = useState();
     const [Telefone, setTelefone] = useState();
-    // const [showAlert, setShowAlert] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
+
+
+     const handleShowAlert = () => {
+        setShowAlert(true);
+    };
+
+
+    const hideAlert = () => {
+        setShowAlert(false);
+    };
+
+
+    useEffect(() => {
+        if (showAlert) {
+            Alert.alert(
+                'Atenção!',
+                alertMessage,
+                [
+                    {
+                        text: 'OK',
+                        onPress: () => {
+                            hideAlert();
+                        }
+                    }
+                ],
+                { cancelable: false }
+            );
+        }
+    }, [showAlert]);
+
 
 
     const SalvarCliente = async () => {
@@ -55,7 +86,7 @@ export default function CadastraContato() {
                 });
             console.log((response));
             if (response != undefined) {
-                if (response.data[0].affectedRows == 1) {
+                if (response.data.message ) {
                     setAlertMessage('Registro inserido com sucesso!')
                     setNome('');
                     setEmail('');
@@ -75,7 +106,7 @@ export default function CadastraContato() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View>
+            <View style={styles.miniContainer}>
                 <View>
                     <Text style={styles.Texto}>Nome do Cliente:</Text>
                     <TextInput value={Nome} onChangeText={setNome} style={styles.Input}></TextInput>
@@ -92,14 +123,16 @@ export default function CadastraContato() {
                     <Text style={styles.Texto}>Celular do Cliente:</Text>
                     <TextInput value={Celular} onChangeText={setCelular} style={styles.Input}></TextInput>
                 </View>
-                <TouchableOpacity style={styles.Botao}
-                    onPress={() => {
-                        SalvarCliente()
-                    }}
-                >
+                <View>
+                    <TouchableOpacity style={styles.Botao}
+                        onPress={() => {
+                            SalvarCliente()
+                        }}
+                    >
 
-                    <Text>Cadastrar contato</Text>
-                </TouchableOpacity >
+                        <Text>Cadastrar contato</Text>
+                    </TouchableOpacity >
+                </View>
             </View>
             <StatusBar style="auto" />
         </SafeAreaView>
@@ -110,7 +143,7 @@ export default function CadastraContato() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#fdfd',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -120,17 +153,23 @@ const styles = StyleSheet.create({
     },
     Input: {
         borderWidth: 1,
-        width: '120%'
+        backgroundColor: '#fdfdf9',
+        borderRadius:15,
+        textAlign:'center'
     },
     Botao: {
-        width: 120,
-        height: 50,
         borderWidth: 1,
         borderColor: "#7D7D7D",
         margin: 10,
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 8,
-
+        width:"60%",
+        left:60,
+        backgroundColor: '#fdfdf9',
+    },
+    miniContainer: {
+        width: "80%",
+        gap: 30,
     }
 });
